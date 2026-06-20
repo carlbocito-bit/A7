@@ -1,0 +1,1565 @@
+:root {
+  --purple: #8b5cf6;
+  --gold: #f7c948;
+  --text: #fbf8ff;
+  --muted: #b8accd;
+  --pink: #ff4f7d;
+  --blue: #5578ff;
+  --green: #78e078;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% -8%, rgba(96, 42, 150, .75), transparent 38%),
+    radial-gradient(circle at 15% 25%, rgba(125, 64, 200, .22), transparent 26%),
+    linear-gradient(180deg, #0a0615 0%, #12091f 42%, #090612 100%);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.app {
+  width: min(100%, 440px);
+  margin: 0 auto;
+  padding: 12px;
+}
+
+.menu-wrapper {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 50;
+}
+
+.menu-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(247,201,72,.35);
+  background: rgba(45,34,73,.95);
+  color: var(--gold);
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.menu-dropdown {
+  display: none;
+  margin-top: 8px;
+  background: rgba(18,13,34,.98);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 14px;
+  padding: 8px;
+}
+
+.menu-dropdown button {
+  display: block;
+  width: 120px;
+  margin: 5px;
+  padding: 10px;
+  background: linear-gradient(135deg,#6d28d9,#9b5cff);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 900;
+}
+
+.hero {
+  text-align: center;
+  padding: 20px 16px 16px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(74, 38, 122, .78), rgba(18, 13, 34, .96));
+  border: 1px solid rgba(255, 255, 255, .08);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .32), inset 0 0 32px rgba(139, 92, 246, .12);
+}
+
+.star-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: var(--gold);
+  font-size: 28px;
+}
+
+.star-line span {
+  width: 70px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.hero h1 {
+  margin: 8px 0 6px;
+  font-size: clamp(31px, 8vw, 40px);
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.hero h2 {
+  margin: 0;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: .28em;
+  font-size: 12px;
+}
+
+.turn-card {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 18px;
+  background: rgba(14, 11, 27, .85);
+  border: 1px solid rgba(255,255,255,.08);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.top-btn {
+  border: 1px solid rgba(255,255,255,.08);
+  color: white;
+  background: rgba(45, 34, 73, .95);
+  border-radius: 14px;
+  padding: 12px 8px;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.top-btn.active {
+  background: linear-gradient(135deg, #6d28d9, #9b5cff);
+  box-shadow: 0 0 18px rgba(139, 92, 246, .28);
+}
+
+.turn-pill {
+  grid-column: 1 / -1;
+  color: var(--gold);
+  border: 1px solid rgba(247, 201, 72, .75);
+  border-radius: 999px;
+  padding: 9px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.tracker-card {
+  margin-top: 10px;
+  padding: 12px 10px;
+  border-radius: 22px;
+  background: rgba(12, 9, 24, .92);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 20px 50px rgba(0,0,0,.28);
+}
+
+.champion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 6px 8px;
+}
+
+.champion-header label {
+  display: block;
+  font-size: 23px;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+
+.champion-header select {
+  width: 210px;
+  max-width: 72vw;
+  min-height: 34px;
+  border-radius: 12px;
+  border: 1px solid rgba(247, 201, 72, .35);
+  background: rgba(45, 34, 73, .95);
+  color: var(--gold);
+  font-weight: 900;
+  font-size: 14px;
+  padding: 0 10px;
+}
+
+.profile-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(59, 37, 88, .8);
+  color: #ddd3ff;
+  font-size: 22px;
+}
+
+.champion-info,
+.signature-card,
+.roll-card,
+.attributes-card,
+.history-card,
+.reset-panel,
+.stat-box {
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at top right, rgba(139, 92, 246, .16), transparent 42%),
+    rgba(27, 20, 49, .95);
+  border: 1px solid rgba(255,255,255,.07);
+  box-shadow: inset 0 0 24px rgba(255,255,255,.03);
+}
+
+.champion-info {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.champion-info strong {
+  color: var(--gold);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.champion-info p {
+  margin: 0 0 5px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.champion-info small {
+  color: white;
+  font-weight: 800;
+}
+
+.stats-grid.three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.stat-box {
+  padding: 10px 6px;
+  text-align: center;
+}
+
+.stat-box h3 {
+  margin: 0 0 8px;
+  color: #cbbde4;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: 10px;
+  min-height: 22px;
+}
+
+.stat-control.small {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  align-items: center;
+  gap: 5px;
+}
+
+.stat-control strong {
+  font-size: 35px;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(255,255,255,.16);
+}
+
+button {
+  cursor: pointer;
+}
+
+.stat-control button,
+.attribute-row button,
+.signature-card button {
+  border: 1px solid rgba(255,255,255,.09);
+  color: white;
+  background: linear-gradient(145deg, #2e2050, #542c8d);
+  border-radius: 11px;
+  font-size: 22px;
+  font-weight: 800;
+  min-height: 38px;
+}
+
+.quick-controls {
+  display: grid;
+  gap: 5px;
+  margin-top: 7px;
+}
+
+.quick-controls.two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.quick-controls button {
+  border-radius: 9px;
+  padding: 7px 2px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(22, 17, 39, .8);
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.quick-controls button:first-child {
+  color: #ff5b8f;
+}
+
+.signature-card {
+  margin-top: 10px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 82px;
+  align-items: center;
+  gap: 8px;
+}
+
+.signature-card strong {
+  color: var(--gold);
+  display: block;
+}
+
+.signature-card small {
+  color: var(--muted);
+}
+
+.signature-card button {
+  min-height: 42px;
+  font-size: 16px;
+  background: linear-gradient(135deg, #6d28d9, #9b5cff);
+}
+
+.roll-card {
+  margin-top: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.roll-card div {
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.roll-card small {
+  display: block;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.nat20 {
+  color: var(--gold);
+  text-shadow: 0 0 18px rgba(247, 201, 72, .45);
+}
+
+.nat1 {
+  color: var(--pink);
+  text-shadow: 0 0 18px rgba(255, 79, 125, .35);
+}
+
+.success {
+  color: var(--green);
+}
+
+.fail {
+  color: var(--pink);
+}
+
+.attributes-card {
+  margin-top: 10px;
+  padding: 10px 8px;
+}
+
+.attributes-title {
+  margin: 0 0 8px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color: #cbbde4;
+  font-size: 13px;
+}
+
+.attribute-row {
+  display: grid;
+  grid-template-columns: 30px 1fr 32px 104px;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 8px;
+  margin: 6px 0;
+  border-radius: 14px;
+  background: rgba(23, 17, 42, .8);
+  border: 1px solid rgba(255,255,255,.06);
+  cursor: pointer;
+}
+
+.attribute-row:active {
+  transform: scale(.99);
+  border-color: rgba(247, 201, 72, .55);
+}
+
+.attr-icon {
+  width: 30px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.attr-icon.might { color: #ff5879; }
+.attr-icon.speed { color: #f7c948; }
+.attr-icon.resolve { color: #72e37b; }
+.attr-icon.focus { color: #5d7cff; }
+.attr-icon.influence { color: #8b5cf6; }
+
+.attribute-row strong {
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: 14px;
+}
+
+.attribute-row b {
+  text-align: center;
+  font-size: 25px;
+}
+
+.attribute-row div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.attribute-row button {
+  min-height: 36px;
+  font-size: 22px;
+  border-radius: 10px;
+}
+
+.history-card {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.history-card strong {
+  color: var(--gold);
+}
+
+#rollHistory {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 4px;
+  line-height: 1.35;
+}
+
+.reset-panel {
+  width: 100%;
+  margin-top: 10px;
+  padding: 13px;
+  color: #ff5b8f;
+  text-align: center;
+  font-weight: 900;
+}
+
+.rules-page {
+  display: none;
+  margin-top: 70px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(27,20,49,.95);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.rules-page h2 {
+  color: var(--gold);
+}
+
+.rules-page p {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+@media (max-width: 390px) {
+  .app { padding: 8px; }
+  .hero { padding: 14px 10px; }
+  .hero h1 { font-size: 29px; }
+  .turn-card { padding: 8px; }
+  .champion-info p { display: none; }
+  .stat-control.small { grid-template-columns: 28px 1fr 28px; }
+  .stat-control strong { font-size: 30px; }
+  .stat-control button { min-height: 34px; font-size: 19px; }
+  .quick-controls button { font-size: 11px; }
+  .attribute-row { grid-template-columns: 27px 1fr 28px 94px; padding: 6px; }
+  .attribute-row strong { font-size: 12px; }
+  .attribute-row b { font-size: 22px; }
+}
+
+
+/* Landscape / sideways phone support */
+@media (orientation: landscape) and (max-height: 520px) {
+  body {
+    overflow: auto;
+  }
+
+  .app {
+    width: 100%;
+    max-width: none;
+    padding: 8px;
+  }
+
+  .hero {
+    padding: 8px 12px;
+  }
+
+  .star-line {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+    margin: 0;
+  }
+
+  .hero h2 {
+    font-size: 10px;
+  }
+
+  .turn-card {
+    grid-template-columns: 120px 120px 1fr;
+    align-items: center;
+    padding: 8px;
+  }
+
+  .turn-pill {
+    grid-column: auto;
+    padding: 9px;
+  }
+
+  .tracker-card {
+    display: grid;
+    grid-template-columns: 0.9fr 1.25fr 0.95fr;
+    gap: 8px;
+    align-items: start;
+  }
+
+  .champion-header,
+  .champion-info,
+  .stats-grid.three {
+    grid-column: 1;
+  }
+
+  .signature-card,
+  .roll-card,
+  .history-card,
+  .reset-panel {
+    grid-column: 3;
+  }
+
+  .attributes-card {
+    grid-column: 2;
+    grid-row: 1 / span 6;
+    margin-top: 0;
+  }
+
+  .champion-header {
+    padding: 0;
+  }
+
+  .champion-header label {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .champion-header select {
+    width: 100%;
+    min-height: 32px;
+    font-size: 12px;
+  }
+
+  .profile-icon {
+    display: none;
+  }
+
+  .champion-info {
+    margin-bottom: 0;
+  }
+
+  .champion-info p {
+    display: none;
+  }
+
+  .stats-grid.three {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .stat-box {
+    padding: 7px;
+  }
+
+  .stat-box h3 {
+    min-height: auto;
+    margin-bottom: 5px;
+  }
+
+  .stat-control.small {
+    grid-template-columns: 30px 1fr 30px;
+  }
+
+  .stat-control strong {
+    font-size: 28px;
+  }
+
+  .stat-control button {
+    min-height: 30px;
+    font-size: 18px;
+    border-radius: 8px;
+  }
+
+  .quick-controls {
+    margin-top: 5px;
+  }
+
+  .quick-controls button {
+    padding: 5px 2px;
+    font-size: 11px;
+  }
+
+  .attributes-card {
+    padding: 8px;
+  }
+
+  .attributes-title {
+    margin-bottom: 6px;
+  }
+
+  .attribute-row {
+    grid-template-columns: 26px 1fr 30px 90px;
+    padding: 6px;
+    margin: 5px 0;
+  }
+
+  .attribute-row strong {
+    font-size: 12px;
+  }
+
+  .attribute-row b {
+    font-size: 20px;
+  }
+
+  .attribute-row button {
+    min-height: 30px;
+    font-size: 18px;
+  }
+
+  .signature-card,
+  .roll-card,
+  .history-card,
+  .reset-panel {
+    margin-top: 0;
+  }
+
+  .signature-card {
+    grid-template-columns: 1fr 70px;
+    padding: 8px;
+  }
+
+  .signature-card button {
+    min-height: 34px;
+  }
+
+  .roll-card {
+    padding: 8px;
+  }
+
+  .roll-card div {
+    font-size: 15px;
+  }
+
+  .history-card {
+    padding: 8px;
+  }
+
+  .reset-panel {
+    padding: 10px;
+  }
+
+  .menu-wrapper {
+    top: 8px;
+    left: 8px;
+  }
+
+  .menu-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 21px;
+  }
+}
+
+
+/* Smaller App Title */
+.hero {
+  padding: 12px 14px !important;
+}
+
+.hero h1 {
+  font-size: 26px !important;
+  margin: 4px 0 !important;
+}
+
+.hero h2 {
+  font-size: 10px !important;
+  letter-spacing: .22em !important;
+}
+
+.star-line {
+  font-size: 20px !important;
+}
+
+.star-line span {
+  width: 45px !important;
+}
+
+/* Static Menu Bar */
+.menu-wrapper {
+  position: sticky !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  background: rgba(9,7,20,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  z-index: 100;
+}
+
+.menu-btn {
+  position: relative;
+}
+
+.menu-dropdown {
+  position: absolute;
+  top: 48px;
+  left: 8px;
+}
+
+/* Give content space after static menu */
+.app {
+  padding-top: 0 !important;
+}
+
+@media (orientation: landscape) {
+  .hero h1 {
+    font-size: 22px !important;
+  }
+
+  .hero {
+    padding: 8px !important;
+  }
+
+  .menu-wrapper {
+    position: sticky !important;
+    top: 0 !important;
+  }
+}
+
+
+/* Enhanced Rule Book */
+.rules-page {
+  padding: 16px !important;
+}
+
+.rules-page h2 {
+  text-align: center;
+  color: var(--gold);
+}
+
+.rule-section {
+  margin: 12px 0;
+  padding: 14px;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at top right, rgba(139,92,246,.18), transparent 45%),
+    rgba(27,20,49,.95);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.rule-section h3 {
+  margin: 0 0 8px;
+  color: var(--gold);
+}
+
+.rule-section p {
+  margin: 5px 0;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+@media (orientation: landscape) {
+  .rules-page {
+    display: none;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+  }
+}
+
+
+/* =========================================================
+   PORTRAIT / LANDSCAPE AUTO-POLISH
+   Portrait = stacked mobile tracker
+   Landscape = true dashboard layout
+   ========================================================= */
+
+/* Shared polish */
+html {
+  min-height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#trackerPage,
+#rulesPage {
+  transition: opacity .15s ease;
+}
+
+/* ---------- PORTRAIT MODE ---------- */
+@media (orientation: portrait) {
+  body {
+    overflow-y: auto;
+  }
+
+  .app {
+    width: min(100%, 440px);
+    max-width: 440px;
+    margin: 0 auto;
+    padding: 0 10px 12px;
+  }
+
+  .menu-wrapper {
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .hero {
+    margin-top: 8px;
+  }
+
+  .tracker-card {
+    display: block;
+  }
+
+  .stats-grid.three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .champion-info {
+    display: block;
+  }
+
+  .signature-card {
+    grid-template-columns: 1fr 82px;
+  }
+
+  .rules-page {
+    max-width: 440px;
+    margin: 12px auto;
+  }
+}
+
+/* ---------- LANDSCAPE MODE ---------- */
+@media (orientation: landscape) {
+  body {
+    overflow-y: auto;
+  }
+
+  .app {
+    width: 100%;
+    max-width: 1180px;
+    min-height: 100dvh;
+    padding: 0 10px 10px !important;
+  }
+
+  .menu-wrapper {
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .hero {
+    margin-top: 8px;
+    padding: 8px 12px !important;
+  }
+
+  .star-line {
+    display: none !important;
+  }
+
+  .hero h1 {
+    font-size: 22px !important;
+    margin: 0 !important;
+  }
+
+  .hero h2 {
+    font-size: 9px !important;
+  }
+
+  .turn-card {
+    grid-template-columns: 130px 130px 1fr;
+    align-items: center;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .turn-pill {
+    grid-column: auto;
+    padding: 9px;
+  }
+
+  .tracker-card {
+    display: grid;
+    grid-template-columns: 280px minmax(330px, 1fr) 280px;
+    grid-template-areas:
+      "champ attrs action"
+      "info  attrs roll"
+      "stats attrs history"
+      "stats attrs reset";
+    gap: 10px;
+    align-items: start;
+    padding: 10px;
+  }
+
+  .champion-header {
+    grid-area: champ;
+    padding: 0;
+  }
+
+  .champion-info {
+    grid-area: info;
+    margin: 0;
+  }
+
+  .stats-grid.three {
+    grid-area: stats;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .attributes-card {
+    grid-area: attrs;
+    margin-top: 0;
+    height: 100%;
+    display: grid;
+    align-content: start;
+  }
+
+  .signature-card {
+    grid-area: action;
+    margin-top: 0;
+  }
+
+  .roll-card {
+    grid-area: roll;
+    margin-top: 0;
+  }
+
+  .history-card {
+    grid-area: history;
+    margin-top: 0;
+  }
+
+  .reset-panel {
+    grid-area: reset;
+    margin-top: 0;
+  }
+
+  .profile-icon {
+    display: grid;
+  }
+
+  .champion-header label {
+    font-size: 18px;
+  }
+
+  .champion-header select {
+    width: 220px;
+  }
+
+  .champion-info p {
+    display: block;
+    font-size: 11px;
+  }
+
+  .stat-box {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 4px 8px;
+    text-align: left;
+  }
+
+  .stat-box h3 {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    margin: 0;
+    min-height: auto;
+    font-size: 10px;
+  }
+
+  .stat-control.small {
+    grid-column: 2;
+    grid-row: 1;
+    grid-template-columns: 30px 1fr 30px;
+  }
+
+  .quick-controls.two {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 0;
+  }
+
+  .stat-control strong {
+    font-size: 29px;
+    text-align: center;
+  }
+
+  .stat-control button {
+    min-height: 30px;
+    font-size: 18px;
+  }
+
+  .quick-controls button {
+    padding: 5px 2px;
+    font-size: 11px;
+  }
+
+  .attribute-row {
+    grid-template-columns: 28px 1fr 32px 96px;
+    margin: 6px 0;
+    padding: 7px;
+  }
+
+  .attribute-row strong {
+    font-size: 13px;
+  }
+
+  .attribute-row b {
+    font-size: 22px;
+  }
+
+  .attribute-row button {
+    min-height: 32px;
+    font-size: 19px;
+  }
+
+  .signature-card {
+    grid-template-columns: 1fr 72px;
+  }
+
+  .signature-card button {
+    min-height: 36px;
+    font-size: 14px;
+  }
+
+  .roll-card div {
+    font-size: 16px;
+  }
+
+  .history-card {
+    min-height: 86px;
+  }
+
+  .rules-page {
+    max-width: 1180px;
+    margin: 12px auto;
+  }
+
+  #rulesPage.rules-page {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    align-items: start;
+  }
+
+  #rulesPage.rules-page h2 {
+    grid-column: 1 / -1;
+  }
+
+  .rule-section {
+    margin: 0;
+    height: 100%;
+  }
+}
+
+/* Small landscape phones */
+@media (orientation: landscape) and (max-height: 430px) {
+  .hero {
+    display: none;
+  }
+
+  .turn-card {
+    margin-top: 8px;
+  }
+
+  .tracker-card {
+    grid-template-columns: 250px minmax(300px, 1fr) 250px;
+    gap: 8px;
+  }
+
+  .champion-info p {
+    display: none;
+  }
+
+  .champion-info {
+    padding: 8px;
+  }
+
+  .attribute-row {
+    margin: 4px 0;
+    padding: 5px 7px;
+  }
+
+  .attributes-title {
+    margin-bottom: 4px;
+  }
+
+  .history-card {
+    display: none;
+  }
+
+  .reset-panel {
+    min-height: 38px;
+    padding: 9px;
+  }
+}
+
+/* Very narrow portrait phones */
+@media (orientation: portrait) and (max-width: 370px) {
+  .stats-grid.three {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-box {
+    display: grid;
+    grid-template-columns: 65px 1fr;
+    align-items: center;
+    gap: 6px;
+    text-align: left;
+  }
+
+  .stat-box h3 {
+    margin: 0;
+    min-height: auto;
+  }
+
+  .stat-control.small {
+    grid-template-columns: 32px 1fr 32px;
+  }
+
+  .quick-controls.two {
+    margin-top: 0;
+  }
+}
+
+
+/* Removed turn tracker - menu handles New Game */
+.turn-card,
+.turn-pill {
+  display: none !important;
+}
+
+/* Make menu options uniform */
+.menu-dropdown button {
+  text-align: center;
+}
+
+/* Reclaim removed turn space */
+.tracker-card {
+  margin-top: 10px;
+}
+
+
+
+/* Compact tracker update: remove recent-roll panel and reclaim space */
+.history-card {
+  display: none !important;
+}
+
+.menu-dropdown button {
+  width: 142px;
+}
+
+.tracker-card {
+  padding: 10px !important;
+  gap: 8px !important;
+}
+
+.champion-info,
+.signature-card,
+.roll-card,
+.attributes-card,
+.stat-box,
+.reset-panel {
+  border-radius: 15px !important;
+}
+
+.champion-info {
+  padding: 8px !important;
+  margin-bottom: 8px !important;
+}
+
+.champion-info p {
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+}
+
+.stats-grid.three {
+  gap: 6px !important;
+}
+
+.stat-box {
+  padding: 8px 5px !important;
+}
+
+.stat-box h3 {
+  margin-bottom: 5px !important;
+  min-height: auto !important;
+}
+
+.stat-control strong {
+  font-size: 30px !important;
+}
+
+.stat-control button,
+.attribute-row button {
+  min-height: 32px !important;
+}
+
+.quick-controls {
+  margin-top: 5px !important;
+}
+
+.signature-card,
+.roll-card,
+.attributes-card,
+.reset-panel {
+  margin-top: 8px !important;
+}
+
+.signature-card {
+  padding: 8px !important;
+  grid-template-columns: 1fr 70px !important;
+}
+
+.signature-card button {
+  min-height: 34px !important;
+}
+
+.roll-card {
+  padding: 8px !important;
+}
+
+.attributes-card {
+  padding: 8px !important;
+}
+
+.attribute-row {
+  padding: 5px 7px !important;
+  margin: 4px 0 !important;
+}
+
+.attribute-row b {
+  font-size: 22px !important;
+}
+
+.reset-panel {
+  padding: 10px !important;
+}
+
+@media (orientation: landscape) {
+  .tracker-card {
+    grid-template-columns: 270px minmax(330px, 1fr) 250px !important;
+    grid-template-areas:
+      "champ attrs action"
+      "info  attrs roll"
+      "stats attrs reset" !important;
+  }
+
+  .signature-card,
+  .roll-card,
+  .reset-panel {
+    margin-top: 0 !important;
+  }
+
+  .stats-grid.three {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (orientation: portrait) and (max-height: 760px) {
+  .hero {
+    display: none;
+  }
+
+  .champion-info p {
+    display: none;
+  }
+}
+
+
+/* Locked Standard Format: Passive + Signature Ability panels */
+.champion-info strong,
+.signature-card strong {
+  color: var(--gold);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.signature-card p {
+  margin: 0 0 5px;
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.signature-card small {
+  color: white;
+  font-weight: 800;
+}
+
+
+/* Signature section is now the roll control + result display */
+.signature-roll-card {
+  cursor: pointer;
+  grid-template-columns: 1fr minmax(112px, 145px) !important;
+  align-items: stretch !important;
+}
+
+.signature-roll-card:active {
+  transform: scale(.99);
+  border-color: rgba(247, 201, 72, .55) !important;
+}
+
+.signature-card button {
+  display: none !important;
+}
+
+.roll-card {
+  display: none !important;
+}
+
+.signature-result-panel {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  min-height: 54px;
+  padding: 7px;
+  border-radius: 13px;
+  background: rgba(14, 11, 27, .82);
+  border: 1px solid rgba(255,255,255,.08);
+  text-align: center;
+}
+
+.signature-result-panel div {
+  font-size: 14px;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.signature-result-panel small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted) !important;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+@media (orientation: landscape) {
+  .tracker-card {
+    grid-template-areas:
+      "champ attrs action"
+      "info  attrs action"
+      "stats attrs reset" !important;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 380px) {
+  .signature-roll-card {
+    grid-template-columns: 1fr !important;
+  }
+
+  .signature-result-panel {
+    margin-top: 7px;
+  }
+}
+
+
+/* Popup Results Standard */
+.signature-roll-card {
+  cursor: pointer;
+  grid-template-columns: 1fr 112px !important;
+  align-items: center !important;
+}
+
+.signature-roll-hint {
+  min-height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: rgba(14, 11, 27, .82);
+  border: 1px solid rgba(247,201,72,.20);
+  color: var(--gold);
+  font-weight: 900;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.roll-card,
+.signature-card button,
+.signature-result-panel {
+  display: none !important;
+}
+
+.result-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: none;
+  place-items: center;
+  padding: 18px;
+  background: rgba(5, 3, 12, .72);
+  backdrop-filter: blur(10px);
+}
+
+.result-modal.open {
+  display: grid;
+}
+
+.result-modal-card {
+  position: relative;
+  width: min(100%, 360px);
+  padding: 22px 18px 18px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top, rgba(139,92,246,.28), transparent 48%),
+    rgba(18,13,34,.98);
+  border: 1px solid rgba(247,201,72,.28);
+  box-shadow: 0 24px 70px rgba(0,0,0,.55);
+  text-align: center;
+}
+
+.result-modal-close {
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(45,34,73,.95);
+  color: white;
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+#resultModalTitle {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--gold);
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+#resultModalStatus {
+  margin: 10px 0;
+  font-size: clamp(26px, 8vw, 38px);
+  line-height: 1.05;
+  font-weight: 900;
+}
+
+#resultModalFormula {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+@media (orientation: portrait) and (max-width: 380px) {
+  .signature-roll-card {
+    grid-template-columns: 1fr !important;
+  }
+
+  .signature-roll-hint {
+    margin-top: 7px;
+  }
+}
+
+
+/* Locked Standard: Signature Ability is the roll control */
+.signature-roll-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.signature-roll-card:active {
+  transform: scale(.99);
+  border-color: rgba(247,201,72,.55);
+}
+
+
+/* Standard update: full Signature Ability card is the interactive roll surface. No separate tap panel. */
+.signature-roll-card {
+  grid-template-columns: 1fr !important;
+  align-items: center !important;
+  cursor: pointer;
+  min-height: 78px;
+}
+
+.signature-roll-card:hover,
+.signature-roll-card:focus-visible {
+  border-color: rgba(247, 201, 72, .55) !important;
+  box-shadow: 0 0 0 2px rgba(247, 201, 72, .08), inset 0 0 24px rgba(255,255,255,.04);
+  outline: none;
+}
+
+.signature-roll-card:active {
+  transform: scale(.99);
+  border-color: rgba(247, 201, 72, .72) !important;
+}
+
+.signature-roll-hint {
+  display: none !important;
+}
+
+/* Signature result state update */
+#resultModalFormula {
+  white-space: pre-line;
+  text-align: left;
+  display: block;
+  background: rgba(14, 11, 27, .62);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.refresh-ap-btn {
+  width: 100%;
+  margin-top: 7px;
+  min-height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(247,201,72,.25);
+  background: rgba(22, 17, 39, .9);
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
